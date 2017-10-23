@@ -1,0 +1,21 @@
+{
+  "name": "biography-analysis",
+  "version": "1.0.0",
+  "description": "Used cognitive apis of IBM Watson to do Biography Analysis. Ex: Determining traits in applicants to a position etc., ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "ibm-watson",
+    "biography-analysis",
+    "NLP"
+  ],
+  "author": "Arjun Krishna",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0"
+  }
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Biography-Analysis</title>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<link rel="stylesheet" href="static/css/bootstrap-tagsinput.css">
+	<script src="static/js/bootstrap-tagsinput.js"></script>
+	<script src="static/js/typeahead.js"></script>
+
+	<link rel="stylesheet" href="static/css/bootstrap-select.css">
+	<script src="static/js/bootstrap-select.js"></script>
+
+</head>
+
+<body>
+
+<div class="text-center jumbotron">
+  <h2> Biography Analysis </h2>
+</div>
+
+<div class="container">
+     
+    	<div class="form-input">
+
+				<form id="uploadForm"
+						 enctype="multipart/form-data"
+						 action="/api/fileupload"
+						 method="post">
+					
+					<div class="row">
+   		 			<div class="col-sm-4">
+   
+							<!-- FILE UPLOAD -->
+							<div class="row">
+								<div class="col-sm-5">
+									Choose the files to upload (<i>max 5 files</i>) <br> <u>min words = 100</u>
+								</div>
+								<div class="col-sm-7">
+									<input type="file" class="btn btn-default" name="userDocument" accept="text/plain" multiple />
+								</div>
+							</div>
+							<hr>
+							<!-- TONE KEYWORDS -->
+							<div class="row">
+								<div class="col-sm-12 text-center">
+									<b>Tone to match</b>
+								</div>
+
+								<div class="col-sm-12 text-center">
+									<select class="selectpicker" name="tone" data-live-search="true" multiple>
+										<optgroup label="Emotion Tone">
+										  <option>Angry</option>
+										  <option>Disgust</option>
+										  <option>Fear</option>
+										  <option>Joy</option>
+											<option>Sadness</option>
+										</optgroup>
+										<optgroup label="Language Tone">
+											<option>Analytical</option>
+											<option>Confident</option>
+											<option>Tentative</option>
+										</optgroup>
+										<optgroup label="Social Tone">
+											<option>Openness</option>
+											<option>Conscientiousness</option>
+											<option>Extraversion</option>
+											<option>Agreeableness</option>
+											<option>Emotional Range</option>
+										</optgroup>
+									</select>
+								</div>
+							</div>
+							<hr>
+							<!-- OTHER TAGS -->
+							<div class="row">
+								<div class="col-sm-12 text-center">
+									<b> Other Keywords </b>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-12 text-center">
+									<input type="text" value="" data-role="tagsinput" placeholder="add a tag" name="keywords"/>
+								</div>
+							</div>
+							<br>
+							
+					  </div>
+
+					  <div class="col-sm-6" style="padding-left: 120px">
+		 					<div class="row">
+		 						<div class="col-sm-12 text-center">
+									<b>Personality Insight</b>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-12">
+									<table class="table">
+										<tr>
+											<td class="col-sm-4"> Personality </td>
+											<td class="col-sm-8"> 
+												<input id="personality" type="text" name="personality" />
+											</td>
+										</tr>
+										<tr>
+											<td class="col-sm-4"> Needs </td>
+											<td class="col-sm-8">
+												<input id="needs" type="text" name="needs" />
+											</td>
+										</tr>
+									</table>
+								</div>
+		 					</div>
+		 				</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<input type="submit" class="btn btn-primary" value="Submit">
+						</div>
+					</div>
+					
+					<span id = "status"></span>
+				</form>
+
+    
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+
+		$('#uploadForm').submit(function() {
+				$("#status").empty().text("File is uploading...");
+				$(this).ajaxSubmit({
+						error: function(xhr) {
+							status('Error: ' + xhr.status);
+						},
+						success: function(response) {
+							console.log(response)
+							$("#uploadForm")[0].children[0].value = '';
+							$("#status").empty().text(response.status);
+						}
+				});
+			return false;
+		});
+	});
+
+</script>
+<script>
+var cities = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'assets/cities.json'
+});
+cities.initialize();
+
+var elt = $('#personality');
+elt.tagsinput({
+  tagClass: function(item) {
+    switch (item.continent) {
+      case 'Europe'   : return 'label label-primary';
+      case 'America'  : return 'label label-danger label-important';
+      case 'Australia': return 'label label-success';
+      case 'Africa'   : return 'label label-default';
+      case 'Asia'     : return 'label label-warning';
+    }
+  },
+  itemValue: 'value',
+  itemText: 'text',
+  typeaheadjs: {
+    name: 'cities',
+    displayKey: 'text',
+    source: cities.ttAdapter()
+  }
+});
+elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
+elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
+elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
+elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
+elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
+</script>
+
+</body>
+</html>

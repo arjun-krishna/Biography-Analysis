@@ -1,0 +1,6 @@
+node_modules/
+credentials.js
+references
+manifest.yml
+test-*.txt
+sample_*.json

@@ -6,12 +6,12 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 	<link rel="stylesheet" href="static/css/bootstrap-tagsinput.css">
 	<script src="static/js/bootstrap-tagsinput.js"></script>
 	<script src="static/js/typeahead.js"></script>
@@ -19,12 +19,51 @@
 	<link rel="stylesheet" href="static/css/bootstrap-select.css">
 	<script src="static/js/bootstrap-select.js"></script>
 
+	<link rel="stylesheet" href="static/css/message-pop.css">
 </head>
 
 <body>
 
 <div class="text-center jumbotron">
   <h2> Biography Analysis </h2>
+</div>
+
+<!-- Personality Add Token -->
+<div id="personalityPopUp" class="messagepop pop" style="margin-left: 20%">
+		<h4> Add personality tags 
+		<a class="close"> <span class="glyphicon glyphicon-remove"></span> </a> </h4>
+		<table class="table">
+			<tr>
+				<td>
+					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Adventurousness", "category":"Openness"});'>Adventurousness</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Artistic interests", "category":"Openness"});'>Artistic interests</button><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Emotionality", "category":"Openness"});'>Emotionality</button><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Imagination", "category":"Openness"});'>Imagination</button><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Intellect", "category":"Openness"});'>Intellect</button><br>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Authority-challenging", "category":"Openness"});'>Authority-challenging</button><br>
+				</td>
+			</tr>
+		</table>
 </div>
 
 <div class="container">
@@ -107,15 +146,22 @@
 								<div class="col-sm-12">
 									<table class="table">
 										<tr>
-											<td class="col-sm-4"> Personality </td>
+											<td class="col-sm-4"> Personality tags <a id="personality-add" href="">[add-tag]</a>
+</td>
 											<td class="col-sm-8"> 
 												<input id="personality" type="text" name="personality" />
 											</td>
 										</tr>
 										<tr>
-											<td class="col-sm-4"> Needs </td>
+											<td class="col-sm-4"> Needs <a id="needs-add" href="">[add-tag]</a> </td>
 											<td class="col-sm-8">
 												<input id="needs" type="text" name="needs" />
+											</td>
+										</tr>
+										<tr>
+										<td class="col-sm-4"> Values <a id="values-add" href="">[add-tag]</a> </td>
+											<td class="col-sm-8">
+												<input id="values" type="text" name="values" />
 											</td>
 										</tr>
 									</table>
@@ -159,38 +205,72 @@
 
 </script>
 <script>
-var cities = new Bloodhound({
-  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
-  queryTokenizer: Bloodhound.tokenizers.whitespace,
-  prefetch: 'assets/cities.json'
-});
-cities.initialize();
 
-var elt = $('#personality');
-elt.tagsinput({
-  tagClass: function(item) {
-    switch (item.continent) {
-      case 'Europe'   : return 'label label-primary';
-      case 'America'  : return 'label label-danger label-important';
-      case 'Australia': return 'label label-success';
-      case 'Africa'   : return 'label label-default';
-      case 'Asia'     : return 'label label-warning';
-    }
-  },
-  itemValue: 'value',
-  itemText: 'text',
-  typeaheadjs: {
-    name: 'cities',
-    displayKey: 'text',
-    source: cities.ttAdapter()
-  }
+$(document).ready(function() {
+	var personality = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  prefetch: 'static/assets/personality.json'
+	});
+
+	personality.initialize();
+
+
+	var elt = $('#personality');
+	elt.tagsinput({
+	  tagClass: function(item) {
+	    switch (item.category) {
+	      case 'Openness' : return 'label label-primary';
+	      case 'Conscientiousness' : return 'label label-danger label-important';
+	      case 'Extraversion': return 'label label-success';
+	      case 'Agreeableness' : return 'label label-default';
+	      case 'Emotional range' : return 'label label-warning';
+	    }
+	  },
+	  itemValue: 'name',
+	  itemText: 'name',
+	  typeaheadjs: {
+	    name: 'name',
+	    displayKey: 'name',
+	    source: personality.ttAdapter()
+	  }
+	});
+	elt.tagsinput('add', {"name": "Intellect", "category":"Openness"});
+	elt.tagsinput('add', {"name": "Achievement striving", "category":"Conscientiousness"});
+	elt.tagsinput('add', {"name": "Assertiveness", "category":"Extraversion"});
+	elt.tagsinput('add', {"name": "Cooperation", "category":"Agreeableness"});
+	elt.tagsinput('add', {"name": "Susceptible to stress", "category":"Emotional range"});
+	elt.tagsinput('add', {"name": "Prone to worry", "category":"Emotional range"});
 });
-elt.tagsinput('add', { "value": 1 , "text": "Amsterdam"   , "continent": "Europe"    });
-elt.tagsinput('add', { "value": 4 , "text": "Washington"  , "continent": "America"   });
-elt.tagsinput('add', { "value": 7 , "text": "Sydney"      , "continent": "Australia" });
-elt.tagsinput('add', { "value": 10, "text": "Beijing"     , "continent": "Asia"      });
-elt.tagsinput('add', { "value": 13, "text": "Cairo"       , "continent": "Africa"    });
 </script>
+<script type="text/javascript">
+	function deselect(e) {
+	  $('.pop').slideFadeToggle(function() {
+	    e.removeClass('selected');
+	  });    
+	}
 
+	$(function() {
+	  $('#personality-add').on('click', function() {
+	    if($(this).hasClass('selected')) {
+	      deselect($(this));               
+	    } else {
+	      $(this).addClass('selected');
+	      $('.pop').slideFadeToggle();
+	    }
+	    return false;
+	  });
+
+	  $('.close').on('click', function() {
+	    deselect($('#personality-add'));
+	    return false;
+	  });
+	});
+
+	$.fn.slideFadeToggle = function(easing, callback) {
+	  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+	};
+
+</script>
 </body>
 </html>

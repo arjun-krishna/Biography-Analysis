@@ -59,7 +59,7 @@ app.post('/api/fileupload',  (req, res) => {
 
 			Promise.all(store_files_promise).then((mssgs) => {
 				var watson_processing = new Promise((resolve, reject) => {
-					ai.process_token('token_'+user_token, resolve, reject);	
+					ai.process_token('token_'+user_token, resolve, reject, req.body);	
 				});
 				watson_processing.then((watson_data) => {
 					res.json({status: 'SUCCESS', data : watson_data});
@@ -77,7 +77,7 @@ app.post('/api/fileupload',  (req, res) => {
 					res.json({status: 'ERROR', data : {}});
 				} else {
 					var watson_processing = new Promise((resolve, reject) => {
-						ai.process_token('token_'+user_token, resolve, reject);	
+						ai.process_token('token_'+user_token, resolve, reject, req.body);	
 					});
 					watson_processing.then((watson_data) => {
 						res.json({status: 'SUCCESS', data : watson_data});

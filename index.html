@@ -20,6 +20,11 @@
 	<script src="static/js/bootstrap-select.js"></script>
 
 	<link rel="stylesheet" href="static/css/message-pop.css">
+	<style>
+		textarea {
+    	overflow-y: scroll;
+   	}
+	</style>
 </head>
 
 <body>
@@ -28,187 +33,313 @@
   <h2> Biography Analysis </h2>
 </div>
 
-<!-- Personality Add Token -->
-<div id="personalityPopUp" class="messagepop pop" style="margin-left: 20%">
-		<h4> Add personality tags 
-		<a class="close"> <span class="glyphicon glyphicon-remove"></span> </a> </h4>
-		<table class="table">
-			<tr>
-				<td>
-					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Adventurousness", "category":"Openness"});'>Adventurousness</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Artistic interests", "category":"Openness"});'>Artistic interests</button><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Emotionality", "category":"Openness"});'>Emotionality</button><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Imagination", "category":"Openness"});'>Imagination</button><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Intellect", "category":"Openness"});'>Intellect</button><br>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Authority-challenging", "category":"Openness"});'>Authority-challenging</button><br>
-				</td>
-			</tr>
-		</table>
-</div>
-<!-- END PERSONALITY DROP BOX TO BE COMPLETED (boring work) -->
 
 <div class="container">
+
+		<!-- Personality Add Token -->
+		<div id="personalityPopUp" class="messagepop pop" style="margin-left: 10%">
+				<h4> Add personality tags 
+				<a class="close"> <span class="glyphicon glyphicon-remove"></span> </a> </h4>
+				<table class="table">
+					<tr>
+						<td>
+							<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Adventurousness", "category":"Openness"});'>Adventurousness</button>
+						</td>
+						<td>
+							<button class="btn btn-danger" onclick='$("#personality").tagsinput("add", {"name": "Achievement striving", "category":"Conscientiousness"});'> Achievement striving</button>
+						</td>
+						<td> 
+							<button class="btn btn-success" onclick='$("#personality").tagsinput("add", {"name": "Activity level", "category":"Extraversion"});'> Activity level</button>
+						</td>
+						<td> 
+							<button class="btn btn-default" onclick='$("#personality").tagsinput("add", {"name": "Altruism", "category":"Agreeableness"});'> Altruism</button>
+						</td>
+						<td> 
+							<button class="btn btn-warning" onclick='$("#personality").tagsinput("add", {"name": "Fiery", "category":"Emotional range"});'> Fiery</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Artistic interests", "category":"Openness"});'>Artistic interests</button><br>
+						</td>
+						<td>
+							<button class="btn btn-danger" onclick='$("#personality").tagsinput("add", {"name": "Cautiousness", "category":"Conscientiousness"});'> Cautiousness</button>
+						</td>
+						<td> 
+							<button class="btn btn-success" onclick='$("#personality").tagsinput("add", {"name": "Assertiveness", "category":"Extraversion"});'> Assertiveness</button>
+						</td>
+						<td> 
+							<button class="btn btn-default" onclick='$("#personality").tagsinput("add", {"name": "Cooperation", "category":"Agreeableness"});'> Cooperation </button>
+						</td>
+						<td> 
+							<button class="btn btn-warning" onclick='$("#personality").tagsinput("add", {"name": "Prone to worry", "category":"Emotional range"});'> Prone to worry</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Emotionality", "category":"Openness"});'>Emotionality</button><br>
+						</td>
+						<td>
+							<button class="btn btn-danger" onclick='$("#personality").tagsinput("add", {"name": "Dutifulness", "category":"Conscientiousness"});'> Dutifulness</button>
+						</td>
+						<td> 
+							<button class="btn btn-success" onclick='$("#personality").tagsinput("add", {"name": "Cheerfulness", "category":"Extraversion"});'> Cheerfulness </button>
+						</td>
+						<td> 
+							<button class="btn btn-default" onclick='$("#personality").tagsinput("add", {"name": "Modesty", "category":"Agreeableness"});'> Modesty</button>
+						</td>
+						<td> 
+							<button class="btn btn-warning" onclick='$("#personality").tagsinput("add", {"name": "Melancholy", "category":"Emotional range"});'> Melancholy</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Imagination", "category":"Openness"});'>Imagination</button><br>
+						</td>
+						<td>
+							<button class="btn btn-danger" onclick='$("#personality").tagsinput("add", {"name": "Orderliness", "category":"Conscientiousness"});'>Orderliness </button>
+						</td>
+						<td> 
+							<button class="btn btn-success" onclick='$("#personality").tagsinput("add", {"name": "Excitement-seeking", "category":"Extraversion"});'> Excitement-seeking</button>
+						</td>
+						<td> 
+							<button class="btn btn-default" onclick='$("#personality").tagsinput("add", {"name": "Uncompromising", "category":"Agreeableness"});'> Uncompromising</button>
+						</td>
+						<td> 
+							<button class="btn btn-warning" onclick='$("#personality").tagsinput("add", {"name": "Immoderation", "category":"Emotional range"});'> Immoderation</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Intellect", "category":"Openness"});'>Intellect</button><br>
+						</td>
+						<td>
+							<button class="btn btn-danger" onclick='$("#personality").tagsinput("add", {"name": "Self-discipline", "category":"Conscientiousness"});'>Self-discipline </button>
+						</td>
+						<td> 
+							<button class="btn btn-success" onclick='$("#personality").tagsinput("add", {"name": "Outgoing", "category":"Extraversion"});'> Outgoing </button>
+						</td>
+						<td> 
+							<button class="btn btn-default" onclick='$("#personality").tagsinput("add", {"name": "Sympathy", "category":"Agreeableness"});'> Sympathy</button>
+						</td>
+						<td> 
+							<button class="btn btn-warning" onclick='$("#personality").tagsinput("add", {"name": "Self-consciousness", "category":"Emotional range"});'> Self-consciousness</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-primary" onclick='$("#personality").tagsinput("add", {"name": "Authority-challenging", "category":"Openness"});'>Authority-challenging</button><br>
+						</td>
+						<td>
+							<button class="btn btn-danger" onclick='$("#personality").tagsinput("add", {"name": "Self-efficacy", "category":"Conscientiousness"});'> Self-efficacy</button>
+						</td>
+						<td> 
+							<button class="btn btn-success" onclick='$("#personality").tagsinput("add", {"name": "Gregariousness", "category":"Extraversion"});'> Gregariousness </button>
+						</td>
+						<td> 
+							<button class="btn btn-default" onclick='$("#personality").tagsinput("add", {"name": "Trust", "category":"Agreeableness"});'> Trust</button>
+						</td>
+						<td> 
+							<button class="btn btn-warning" onclick='$("#personality").tagsinput("add", {"name": "Susceptible to stress", "category":"Emotional range"});'> Susceptible to stress</button>
+						</td>
+					</tr>
+				</table>
+		</div>
+		<!-- END PERSONALITY DROP BOX-->
+
      
-    	<div class="form-input">
+  	<div class="form-input">
 
-				<form id="uploadForm"
-						 enctype="multipart/form-data"
-						 action="/api/fileupload"
-						 method="post">
-					
-					<div class="row">
-   		 			<div class="col-sm-4">
-   
-							<!-- FILE UPLOAD -->
-							<div class="row">
-								<div class="col-sm-5">
-									Choose the files to upload (<i>max 5 files</i>) <br> <u>min words = 100</u>
-								</div>
-								<div class="col-sm-7">
-									<input type="file" class="btn btn-default" name="userDocument" accept="text/plain" multiple />
-								</div>
+			<form id="uploadForm"
+					 enctype="multipart/form-data"
+					 action="/api/fileupload"
+					 method="post">
+				
+				<div class="row">
+ 		 			<div class="col-sm-4">
+ 
+						<!-- FILE UPLOAD -->
+						<div class="row">
+							<div class="col-sm-5">
+								Choose the files to upload (<i>max 5 files</i>) <br> <u>min words = 100</u>
 							</div>
-							<hr>
-							<!-- TONE KEYWORDS -->
-							<div class="row">
-								<div class="col-sm-12 text-center">
-									<b>Tone to match</b>
-								</div>
-
-								<div class="col-sm-12 text-center">
-									<select class="selectpicker" name="tone" data-live-search="true" multiple>
-										<optgroup label="Emotion Tone">
-										  <option>Angry</option>
-										  <option>Disgust</option>
-										  <option>Fear</option>
-										  <option>Joy</option>
-											<option>Sadness</option>
-										</optgroup>
-										<optgroup label="Language Tone">
-											<option>Analytical</option>
-											<option>Confident</option>
-											<option>Tentative</option>
-										</optgroup>
-										<optgroup label="Social Tone">
-											<option>Openness</option>
-											<option>Conscientiousness</option>
-											<option>Extraversion</option>
-											<option>Agreeableness</option>
-											<option>Emotional Range</option>
-										</optgroup>
-									</select>
-								</div>
+							<div class="col-sm-7">
+								<input type="file" class="btn btn-default" name="userDocument" accept="text/plain" multiple />
+							<!-- 	<select class="selectpicker" name="Language">
+									<option value="en">English</option>
+									<option value="es"> Spanish </option>
+								</select> -->
 							</div>
-							<hr>
-							<!-- OTHER TAGS -->
-							<div class="row">
-								<div class="col-sm-12 text-center">
-									<b> Other Keywords </b>
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div class="col-sm-12 text-center">
-									<input type="text" value="" data-role="tagsinput" placeholder="add a tag" name="keywords"/>
-								</div>
-							</div>
-							<br>
-							
-					  </div>
-
-					  <div class="col-sm-6" style="padding-left: 120px">
-		 					<div class="row">
-		 						<div class="col-sm-12 text-center">
-									<b>Personality Insight</b>
-								</div>
-							</div>
-							<br>
-							<div class="row">
-								<div class="col-sm-12">
-									<table class="table">
-										<tr>
-											<td class="col-sm-4"> <b>Personality tags</b> <a id="personality-add" href="">[add-tag]</a>
-</td>
-											<td class="col-sm-8"> 
-												<input id="personality" type="text" name="personality" />
-											</td>
-										</tr>
-										<tr>
-											<td class="col-sm-4 text-center"> <b>Needs</b> </td>
-											<td class="col-sm-8">
-												<select class="selectpicker" name="needs" data-live-search="true" multiple>
-												  <option>Challenge</option>
-												  <option>Closeness</option>
-												  <option>Curiosity</option>
-												  <option>Excitement</option>
-													<option>Harmony</option>
-													<option>Ideal</option>
-													<option>Liberty</option>
-													<option>Love</option>
-													<option>Practicality</option>
-													<option>Self-expression</option>
-													<option>Stability</option>
-													<option>Structure</option>
-												</select>
-											</td>
-										</tr>
-										<tr>
-										<td class="col-sm-4 text-center"> <b>Values</b>  </td>
-											<td class="col-sm-8">
-												<select class="selectpicker" name="values" data-live-search="true" multiple>
-												  <option>Conservation</option>
-												  <option>Openness to change</option>
-												  <option>Hedonism</option>
-												  <option>Self-enhancement</option>
-													<option>Self-transcendence</option>
-												</select>
-											</td>
-										</tr>
-									</table>
-								</div>
-		 					</div>
-		 				</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12 text-center">
-							<input type="submit" class="btn btn-primary" value="Submit">
 						</div>
-					</div>
-					
-					<span id = "status"></span>
-				</form>
+						<hr>
+						<!-- TONE KEYWORDS -->
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<b>Tone to match</b>
+							</div>
 
-    
-	</div>
+							<div class="col-sm-12 text-center">
+								<select class="selectpicker" name="tone" data-live-search="true" multiple>
+									<optgroup label="Emotion Tone">
+									  <option>Angry</option>
+									  <option>Disgust</option>
+									  <option>Fear</option>
+									  <option>Joy</option>
+										<option>Sadness</option>
+									</optgroup>
+									<optgroup label="Language Tone">
+										<option>Analytical</option>
+										<option>Confident</option>
+										<option>Tentative</option>
+									</optgroup>
+									<optgroup label="Social Tone">
+										<option>Openness</option>
+										<option>Conscientiousness</option>
+										<option>Extraversion</option>
+										<option>Agreeableness</option>
+										<option>Emotional Range</option>
+									</optgroup>
+								</select>
+							</div>
+						</div>
+						<hr>
+						<!-- OTHER TAGS -->
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<b> Other Keywords </b>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12 text-center">
+								<input type="text" value="" data-role="tagsinput" placeholder="add a tag" name="keywords"/>
+							</div>
+						</div>
+						<br>
+						
+				  </div>
+
+				  <div class="col-sm-6" style="padding-left: 120px">
+	 					<div class="row">
+	 						<div class="col-sm-12 text-center">
+								<b>Personality Insight</b>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+								<table class="table">
+									<tr>
+										<td class="col-sm-4"> <b>Personality tags</b> <a id="personality-add" href="">[add-tag]</a></td>
+										<td class="col-sm-8"> 
+											<input id="personality" type="text" name="personality" />
+										</td>
+									</tr>
+									<tr>
+										<td class="col-sm-4 text-center"> <b>Needs</b> </td>
+										<td class="col-sm-8">
+											<select class="selectpicker" name="needs" data-live-search="true" multiple>
+											  <option>Challenge</option>
+											  <option>Closeness</option>
+											  <option>Curiosity</option>
+											  <option>Excitement</option>
+												<option>Harmony</option>
+												<option>Ideal</option>
+												<option>Liberty</option>
+												<option>Love</option>
+												<option>Practicality</option>
+												<option>Self-expression</option>
+												<option>Stability</option>
+												<option>Structure</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+									<td class="col-sm-4 text-center"> <b>Values</b>  </td>
+										<td class="col-sm-8">
+											<select class="selectpicker" name="values" data-live-search="true" multiple>
+											  <option>Conservation</option>
+											  <option>Openness to change</option>
+											  <option>Hedonism</option>
+											  <option>Self-enhancement</option>
+												<option>Self-transcendence</option>
+											</select>
+										</td>
+									</tr>
+								</table>
+							</div>
+	 					</div>
+	 				</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<input type="submit" class="btn btn-primary btn-large" value="Submit">
+					</div>
+				</div>
+				
+			</form> 
+		</div>
+		<div class="row">
+			<div class="text-center col-sm-12"> <h3 id="status"></h3> </div>
+		</div>
+		<div class="row" id="result">
+			<div class="col-sm-6">
+				<b> Content </b> <br>
+				<textarea rows="25" cols="60" id="content-area">
+				</textarea>
+			</div>
+			<div class="col-sm-6" >
+				<div class="text-center" id="result-class" style="padding-top: 20px;padding-bottom: 20px"> 
+					<h4>Percentage Match</h4>  <h2 id="score-result"> </h2>
+					<br>
+					<h4 id="match-type"> </h4> 
+				</div>
+
+				<div id="consumer-preferences-container" style="padding-top: 20px; padding-bottom: 20px;">
+					<i> Volunteering / Entrepreneurship Qualities </i> 
+					<ul id="preference" class="list-group">
+					</ul>
+				</div> 
+				<div>
+					<h4> Personality </h4>
+					<table class="table">
+					 	<tr>
+					 		<td> Agreeableness </td>
+					 		<td id="big5_agreeableness"> </td>
+					 	<tr>
+					 	<tr>
+					 		<td> Conscientiousness </td>
+					 		<td id="big5_conscientiousness"> </td>
+					 	<tr>
+					 	<tr>
+					 		<td> Openness </td>
+					 		<td id="big5_openness"> </td>
+					 	<tr>
+					 	<tr>
+					 		<td> Introversion/Extraversion </td>
+					 		<td id="big5_extraversion"> </td>
+					 	<tr>
+					 	<tr>
+					 		<td> Emotional range </td>
+					 		<td id="big5_neuroticism"> </td>
+					 	<tr>
+					</table>
+				</div>
+			</div>
+		</div>
 </div>
 
 
 <script type="text/javascript">
 	
 	$(document).ready(function() {
+		$("#result").hide();
 
 		$('#uploadForm').submit(function() {
-				$("#status").empty().text("File is uploading...");
+				$("#result").hide();
+				$("#preference").empty();
+				$("#result-class").attr('class','text-center');
+				$("#status").empty().text("Processing....");
 				$(this).ajaxSubmit({
 						error: function(xhr) {
 							status('Error: ' + xhr.status);
@@ -217,6 +348,40 @@
 							console.log(response)
 							$("#uploadForm")[0].children[0].value = '';
 							$("#status").empty().text(response.status);
+
+							$("#result").show()
+							$("#content-area").val(response.data.content);
+							$("#score-result").text((response.data.score *100).toPrecision(3)+' %')
+							if (response.data.score > 0.7) {
+								$('#result-class').addClass('btn-success');
+								$('#match-type').text('Great Match!');
+							} else if (response.data.score > 0.4) {
+								$('#result-class').addClass('btn-info');
+								$('#match-type').text('Average Match!');
+							} else {
+								$('#result-class').addClass('btn-warning');
+								$('#match-type').text('No Match');
+							}
+
+							// consumer pref
+							for (i in response.data.personality.consumption_preferences) {
+								obj = response.data.personality.consumption_preferences[i];
+								if (obj['name'] == 'Entrepreneurship Preferences' || obj['name'] == 'Volunteering Preferences') {
+									for (j in obj['consumption_preferences']) {
+										obj2 = obj['consumption_preferences'][j]
+										if (obj2.score >= 0.5) {
+											$("#preference").append('<li class="list-group-item">'+obj2.name+'</li>');
+										}
+									}
+								}
+							}
+
+							// personality
+							for (i in response.data.personality.personality) {
+								obj = response.data.personality.personality[i];
+								$('#'+obj.trait_id).text((obj.percentile*100).toPrecision(3)+' %')
+							}
+
 						}
 				});
 			return false;

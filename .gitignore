@@ -1,6 +1,7 @@
 node_modules/
 credentials.js
 references
+tmp/*
 manifest.yml
 test-*.txt
 sample_*.json

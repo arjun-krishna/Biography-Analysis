@@ -20,6 +20,14 @@ start application
 
 Visit http://localhost:3000/ to view the interface.
 
+Application built as a part of the TopCoder, Cognitive Community Challenge. 
+
+demo video
+-----------
+
+[![Watch the video](https://img.youtube.com/vi/WljkMXVDwR8/0.jpg)](https://youtu.be/WljkMXVDwR8)
+
+
 ==========================================================================================
 
 Create a credentials.js in the current folder with the following content, to access IBM WATSON services.

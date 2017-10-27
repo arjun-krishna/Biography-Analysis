@@ -4,3 +4,4 @@ references
 manifest.yml
 test-*.txt
 sample_*.json
+*.zip
